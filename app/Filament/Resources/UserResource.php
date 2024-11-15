@@ -35,6 +35,7 @@ class UserResource extends Resource
                     ->password()
                     ->required()
                     ->maxLength(255),
+                Forms\Components\Select::make('role')->options(['admin' => 'Admin','guru' => 'Guru'])
             ]);
     }
 
@@ -54,6 +55,7 @@ class UserResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('role')
             ])
             ->filters([
                 //
