@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Siswa;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -30,5 +31,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'johndoe@mail.com',
             'role' => 'guru',
         ])->assignRole('guru');
+
+        Siswa::factory()->count(10)->create();
     }
 }
