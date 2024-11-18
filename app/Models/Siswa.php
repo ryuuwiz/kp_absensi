@@ -20,4 +20,9 @@ class Siswa extends Model
     ];
 
     public $timestamps = false;
+
+    public function kelas(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Kelas::class, 'id_kelas', 'id_kelas');
+    }
 }

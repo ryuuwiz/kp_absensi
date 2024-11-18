@@ -16,6 +16,7 @@ class SiswaFactory extends Factory
             'nama_lengkap' => $this->faker->firstName() . ' ' . $this->faker->lastName(),
             'jenis_kelamin' => $this->faker->randomElement(['Laki-laki', 'Perempuan']),
             'alamat' => $this->faker->address(),
+            'id_kelas' => $this->faker->numberBetween(1, 10),
         ];
     }
 }

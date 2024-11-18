@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id('id_siswa');
             $table->string('nis', 10)->unique();
             $table->string('nama_lengkap', 50);
-            $table->string('jenis_kelamin', 10);
+            $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
             $table->string('alamat', 100);
+            $table->unsignedBigInteger('id_kelas');
+            $table->foreign('id_kelas')->references('id_kelas')->on('kelas')->onDelete('cascade');
         });
     }
 

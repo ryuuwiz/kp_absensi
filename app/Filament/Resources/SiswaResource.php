@@ -36,10 +36,14 @@ class SiswaResource extends Resource
                     'Laki-laki' => 'Laki-laki',
                     'Perempuan' => 'Perempuan',
                 ])
-                ->label('Jenis Kelamin'),
+                    ->label('Jenis Kelamin'),
                 Forms\Components\TextInput::make('alamat')
                     ->label('Alamat')
                     ->required(),
+                Forms\Components\Select::make('id_kelas')
+                ->label('Kelas')
+                ->relationship('kelas', 'nama_kelas')
+                ->required(),
             ]);
     }
 
@@ -59,6 +63,9 @@ class SiswaResource extends Resource
                 Tables\Columns\TextColumn::make('alamat')
                     ->label('Alamat')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('kelas.nama_kelas')
+                    ->label('Kelas')
+                    ->searchable(),
             ])
             ->filters([
                 //
@@ -71,11 +78,11 @@ class SiswaResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
                 Tables\Actions\BulkAction::make('export')
-                ->label('Export ke Excel')
-                ->icon('heroicon-o-document-arrow-down')
-                ->action(function (Collection $records) {
-                    return Excel::download(new SiswaExport($records), "siswa.xlsx");
-                }),
+                    ->label('Export ke Excel')
+                    ->icon('heroicon-o-document-arrow-down')
+                    ->action(function (Collection $records) {
+                        return Excel::download(new SiswaExport($records), "siswa.xlsx");
+                    }),
             ]);
     }
 
