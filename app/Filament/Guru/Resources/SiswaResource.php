@@ -44,6 +44,9 @@ class SiswaResource extends Resource
             ]);
     }
 
+    /**
+     * @throws \Exception
+     */
     public static function table(Table $table): Table
     {
         return $table
@@ -70,17 +73,7 @@ class SiswaResource extends Resource
                     ->searchable(),
             ])
             ->filters([
-                Tables\Filters\SelectFilter::make('kelas')
-                    ->label('Kelas')
-                    ->options(
-                        \App\Models\Kelas::all()->pluck('nama_kelas', 'id_kelas')
-                    ),
-                Tables\Filters\SelectFilter::make('jenis_kelamin')
-                    ->label('Jenis Kelamin')
-                    ->options([
-                        'Laki-laki' => 'Laki-laki',
-                        'Perempuan' => 'Perempuan',
-                    ]),
+                //
             ])
             ->actions([
                 //
