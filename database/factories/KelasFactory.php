@@ -13,7 +13,7 @@ class KelasFactory extends Factory
     {
         return [
             'nama_kelas' => $this->faker->randomElement(['VII', 'VIII', 'IX']) . '-' . $this->faker->numberBetween(1, 5),
-            'id_guru' => $this->faker->numberBetween(2, 10),
+            'id_guru' => $this->faker->numberBetween(2, 3),
         ];
     }
 }
