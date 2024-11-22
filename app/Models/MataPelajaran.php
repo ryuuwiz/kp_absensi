@@ -15,7 +15,7 @@ class MataPelajaran extends Model
 
     protected $fillable = ['nama_mapel', 'id_kelas'];
 
-    public function kelas()
+    public function kelas(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Kelas::class, 'id_kelas');
     }

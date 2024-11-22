@@ -41,7 +41,7 @@ class MataPelajaranResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('nama_mapel')
-                    ->label('Nama Mata Pelajaran')
+                    ->label('Mata Pelajaran')
                     ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('kelas.nama_kelas')->label('Kelas')->sortable(),

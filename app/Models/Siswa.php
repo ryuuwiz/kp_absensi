@@ -16,7 +16,7 @@ class Siswa extends Model
         'nis',
         'nama_lengkap',
         'jenis_kelamin',
-        'alamat',
+        'id_kelas'
     ];
 
     public $timestamps = false;

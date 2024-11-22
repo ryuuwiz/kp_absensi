@@ -12,14 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('absensi', function (Blueprint $table) {
-            $table->id("id_absensi");
+            $table->id('id_absensi');
             $table->unsignedBigInteger('id_siswa');
-            $table->unsignedBigInteger('id_mapel');
+            $table->unsignedBigInteger('id_jadwal');
+            $table->foreign('id_siswa')->references('id_siswa')->on('siswa');
+            $table->foreign('id_jadwal')->references('id_jadwal')->on('jadwal');
             $table->date('tanggal');
-            $table->enum('status', ['Hadir', 'Tidak Hadir']);
-            $table->timestamps();
-            $table->foreign("id_siswa")->references("id_siswa")->on("siswa")->onDelete('cascade');
-            $table->foreign("id_mapel")->references("id_mapel")->on("mata_pelajaran")->onDelete('cascade');
+            $table->enum('status', ['hadir', 'alpha', 'izin']);
         });
     }
 

@@ -13,7 +13,9 @@ class ListAbsensis extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\Action::make('absensi')
+            ->label('Absensi')
+            ->action(fn () => redirect('/admin/absensi/take')),
         ];
     }
 }

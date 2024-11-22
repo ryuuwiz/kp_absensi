@@ -15,8 +15,7 @@ class SiswaFactory extends Factory
             'nis' => $this->faker->unique()->numberBetween(1000000000, 9999999999),
             'nama_lengkap' => $this->faker->firstName() . ' ' . $this->faker->lastName(),
             'jenis_kelamin' => $this->faker->randomElement(['Laki-laki', 'Perempuan']),
-            'alamat' => $this->faker->address(),
-            'id_kelas' => $this->faker->numberBetween(1, 10),
+            'id_kelas' => 1,
         ];
     }
 }

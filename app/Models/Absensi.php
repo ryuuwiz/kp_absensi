@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Absensi extends Model
 {
@@ -12,24 +11,22 @@ class Absensi extends Model
 
     protected $table = 'absensi';
     protected $primaryKey = 'id_absensi';
-
     protected $fillable = [
         'id_siswa',
-        'id_mapel',
+        'id_jadwal',
         'tanggal',
         'status',
     ];
 
-    /**
-     * @return BelongsTo
-     */
+    public $timestamps = false;
+
     public function siswa(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Siswa::class, 'id_siswa');
     }
 
-    public function mataPelajaran(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function jadwal(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(MataPelajaran::class, 'id_mapel');
+        return $this->belongsTo(Jadwal::class, 'id_jadwal');
     }
 }

@@ -63,10 +63,6 @@ class SiswaResource extends Resource
                     ->label('Jenis Kelamin')
                     ->sortable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('alamat')
-                    ->label('Alamat')
-                    ->sortable()
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('kelas.nama_kelas')
                     ->label('Kelas')
                     ->sortable()

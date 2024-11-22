@@ -37,9 +37,6 @@ class SiswaResource extends Resource
                     'Perempuan' => 'Perempuan',
                 ])
                     ->label('Jenis Kelamin'),
-                Forms\Components\TextInput::make('alamat')
-                    ->label('Alamat')
-                    ->required(),
                 Forms\Components\Select::make('id_kelas')
                 ->label('Kelas')
                 ->relationship('kelas', 'nama_kelas')
@@ -59,9 +56,6 @@ class SiswaResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('jenis_kelamin')
                     ->label('Jenis Kelamin')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('alamat')
-                    ->label('Alamat')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('kelas.nama_kelas')
                     ->label('Kelas')
