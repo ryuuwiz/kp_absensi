@@ -19,7 +19,7 @@ class TakeAbsensi extends Page
     protected static string $view = 'filament.resources.absensi-resource.pages.take-absensi';
     protected static ?string $title = 'Pilih Absensi';
 
-   protected ?string $heading = 'Pilih Absensi';
+    protected ?string $heading = 'Pilih Absensi';
 
     public $id_kelas;
     public $id_jadwal;
@@ -30,13 +30,13 @@ class TakeAbsensi extends Page
     public $data = [];
     public $status = [];
 
-   public function mount(): void
-   {
-       $this->jadwal = Jadwal::all();
-   }
+    public function mount(): void
+    {
+        $this->jadwal = Jadwal::all();
+    }
 
-   public function pilihAbsen(): void
-   {
+    public function pilihAbsen(): void
+    {
         $this->data = Siswa::where('id_kelas', function ($query) {
             $query->select('id_kelas')
                 ->from('jadwal')
@@ -44,22 +44,22 @@ class TakeAbsensi extends Page
         })->orderBy('nama_lengkap', 'ASC')->get();
 
         foreach ($this->data as $item) {
-           $this->status[$item->id_siswa] = 'hadir'; // Default status
+            $this->status[$item->id_siswa] = 'hadir'; // Default status
         }
-   }
+    }
 
-   public function simpanAbsensi(): void
-   {
-       foreach ($this->status as $id_siswa => $status) {
-           Absensi::updateOrCreate(
-               ['id_siswa' => $id_siswa, 'id_jadwal' => $this->id_jadwal],
-               ['tanggal' => now(), 'status' => $status]
-           );
-       }
+    public function simpanAbsensi(): void
+    {
+        foreach ($this->status as $id_siswa => $status) {
+            Absensi::updateOrCreate(
+                ['id_siswa' => $id_siswa, 'id_jadwal' => $this->id_jadwal],
+                ['tanggal' => now()->format('d-m-Y'), 'status' => $status]
+            );
+        }
 
-       Notification::make()
-           ->title('Absensi Berhasil Disimpan!')
-           ->success()
-           ->send();
-   }
+        Notification::make()
+            ->title('Absensi Berhasil Disimpan!')
+            ->success()
+            ->send();
+    }
 }
