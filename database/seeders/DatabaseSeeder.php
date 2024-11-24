@@ -27,16 +27,19 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@mail.com',
             'role' => 'admin',
         ])->assignRole('admin');
+
         User::factory()->create([
             'name' => 'Test',
             'email' => 'test@mail.com',
             'role' => 'guru',
         ])->assignRole('guru');
+
         User::factory()->create([
             'name' => 'John Doe',
             'email' => 'john@mail.com',
             'role' => 'guru',
         ])->assignRole('guru');
+
         User::factory()->create([
             'name' => 'Jane Doe',
             'email' => 'jane@mail.com',
@@ -46,7 +49,5 @@ class DatabaseSeeder extends Seeder
         Kelas::factory()->count(1)->create();
         Siswa::factory()->count(30)->create();
         MataPelajaran::factory()->count(10)->create();
-        Jadwal::factory()->count(10)->create();
-//        Absensi::factory()->count(30)->create();
     }
 }

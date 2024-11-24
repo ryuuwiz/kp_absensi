@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('jadwal', function (Blueprint $table) {
             $table->id('id_jadwal');
-            $table->string('hari');
-            $table->time('jam_mulai');
-            $table->time('jam_selesai');
             $table->unsignedBigInteger('id_kelas');
             $table->unsignedBigInteger('id_mapel');
+            $table->date('tanggal');
+
+            // Foreign keys
             $table->foreign('id_kelas')->references('id_kelas')->on('kelas');
             $table->foreign('id_mapel')->references('id_mapel')->on('mata_pelajaran');
         });

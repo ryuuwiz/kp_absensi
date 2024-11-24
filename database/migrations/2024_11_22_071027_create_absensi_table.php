@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id('id_absensi');
             $table->unsignedBigInteger('id_siswa');
             $table->unsignedBigInteger('id_jadwal');
+            $table->enum('status', ['hadir', 'alpha', 'izin']);
+
+            // Foreign keys
             $table->foreign('id_siswa')->references('id_siswa')->on('siswa');
             $table->foreign('id_jadwal')->references('id_jadwal')->on('jadwal');
-            $table->date('tanggal');
-            $table->enum('status', ['hadir', 'alpha', 'izin']);
         });
     }
 

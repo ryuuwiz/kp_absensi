@@ -13,11 +13,9 @@ class Jadwal extends Model
     protected $primaryKey = 'id_jadwal';
     public $timestamps = false;
     protected $fillable = [
-        'hari',
-        'jam_mulai',
-        'jam_selesai',
         'id_kelas',
         'id_mapel',
+        'tanggal',
     ];
 
     public function kelas(): \Illuminate\Database\Eloquent\Relations\BelongsTo

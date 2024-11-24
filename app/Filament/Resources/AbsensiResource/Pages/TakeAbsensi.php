@@ -53,7 +53,7 @@ class TakeAbsensi extends Page
         foreach ($this->status as $id_siswa => $status) {
             Absensi::updateOrCreate(
                 ['id_siswa' => $id_siswa, 'id_jadwal' => $this->id_jadwal],
-                ['tanggal' => now()->format('d-m-Y'), 'status' => $status]
+                ['tanggal' => now(), 'status' => $status]
             );
         }
 

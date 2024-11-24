@@ -12,7 +12,7 @@ class MataPelajaranFactory extends Factory
     public function definition(): array
     {
         return [
-            'nama_mapel' => $this->faker->word(),
+            'nama_mapel' => $this->faker->randomElement(['IPA', 'IPS', 'Matematika', 'Fisika', 'Kimia', 'Agama Islam', 'Pemrograman Web', 'Seni Budaya']),
             'id_kelas' => 1,
         ];
     }

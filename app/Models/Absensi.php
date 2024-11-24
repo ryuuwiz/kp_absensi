@@ -11,14 +11,13 @@ class Absensi extends Model
 
     protected $table = 'absensi';
     protected $primaryKey = 'id_absensi';
+    public $timestamps = false;
+
     protected $fillable = [
         'id_siswa',
         'id_jadwal',
-        'tanggal',
         'status',
     ];
-
-    public $timestamps = false;
 
     public function siswa(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
