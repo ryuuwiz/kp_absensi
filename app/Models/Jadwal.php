@@ -12,6 +12,7 @@ class Jadwal extends Model
     protected $table = 'jadwal';
     protected $primaryKey = 'id_jadwal';
     public $timestamps = false;
+
     protected $fillable = [
         'id_kelas',
         'id_mapel',

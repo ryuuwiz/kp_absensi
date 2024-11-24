@@ -46,8 +46,7 @@ class DatabaseSeeder extends Seeder
             'role' => 'guru',
         ])->assignRole('guru');
 
-        Kelas::factory()->count(1)->create();
-        Siswa::factory()->count(30)->create();
-        MataPelajaran::factory()->count(10)->create();
+        Kelas::factory()->count(3)->create();
+        Siswa::factory()->count(9)->create();
     }
 }

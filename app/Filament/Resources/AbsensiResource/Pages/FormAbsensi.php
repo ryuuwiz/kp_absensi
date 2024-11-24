@@ -12,14 +12,13 @@ use Filament\Notifications\Notification;
 use Filament\Resources\Pages\Page;
 use Illuminate\Contracts\View\View;
 
-class TakeAbsensi extends Page
+class FormAbsensi extends Page
 {
     protected static string $resource = AbsensiResource::class;
 
-    protected static string $view = 'filament.resources.absensi-resource.pages.take-absensi';
-    protected static ?string $title = 'Pilih Absensi';
-
-    protected ?string $heading = 'Pilih Absensi';
+    protected static string $view = 'filament.resources.absensi-resource.pages.form-absensi';
+    protected static ?string $title = 'Form Absensi';
+    protected ?string $heading = 'Form Absensi';
 
     public $id_kelas;
     public $id_jadwal;
@@ -46,6 +45,11 @@ class TakeAbsensi extends Page
         foreach ($this->data as $item) {
             $this->status[$item->id_siswa] = 'hadir'; // Default status
         }
+    }
+
+    public function updatedJadwal(): void
+    {
+        dd($this->id_jadwal);
     }
 
     public function simpanAbsensi(): void

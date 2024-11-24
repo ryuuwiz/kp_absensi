@@ -60,7 +60,7 @@ class AbsensiResource extends Resource
         return [
             'index' => Pages\ListAbsensis::route('/'),
             'edit' => Pages\EditAbsensi::route('/{record}/edit'),
-            'take' => Pages\TakeAbsensi::route('/take'),
+            'take' => Pages\FormAbsensi::route('/take'),
         ];
     }
 }
