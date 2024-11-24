@@ -24,6 +24,7 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
+            ->spa()
             ->darkMode(false)
             ->topNavigation()
             ->id('admin')

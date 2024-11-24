@@ -47,11 +47,6 @@ class FormAbsensi extends Page
         }
     }
 
-    public function updatedJadwal(): void
-    {
-        dd($this->id_jadwal);
-    }
-
     public function simpanAbsensi(): void
     {
         foreach ($this->status as $id_siswa => $status) {
