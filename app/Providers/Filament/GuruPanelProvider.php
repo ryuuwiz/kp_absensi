@@ -25,6 +25,7 @@ class GuruPanelProvider extends PanelProvider
         return $panel
             ->id('guru')
             ->path('guru')
+            ->spa()
             ->darkMode(false)
             ->topNavigation()
             ->login()

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Guru\Resources;
 
 use App\Exports\AbsensiExport;
-use App\Filament\Resources\AbsensiResource\Pages;
+use App\Filament\Guru\Resources\AbsensiResource\Pages;
 use App\Models\Absensi;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
@@ -11,13 +11,13 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Enums\FiltersLayout;
+use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Tables\Filters\SelectFilter;
-use Filament\Tables\Filters\Filter;
-use Filament\Tables\Enums\FiltersLayout;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Maatwebsite\Excel\Facades\Excel;
 
 class AbsensiResource extends Resource
@@ -26,8 +26,8 @@ class AbsensiResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     protected static ?string $slug = 'absensi';
-    protected static ?string $navigationLabel = 'Riwayat Absensi';
-    protected static ?string $modelLabel = 'Riwayat Absensi';
+    protected static ?string $navigationLabel = 'Absensi';
+    protected static ?string $modelLabel = 'Absensi';
 
     public static function form(Form $form): Form
     {
@@ -81,9 +81,9 @@ class AbsensiResource extends Resource
             ], layout: FiltersLayout::AboveContent)
             ->actions([])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+//                Tables\Actions\BulkActionGroup::make([
+//                    Tables\Actions\DeleteBulkAction::make(),
+//                ]),
                 Tables\Actions\BulkAction::make('export')
                     ->label('Rekap Absensi')
                     ->icon('heroicon-o-document-arrow-down')
@@ -104,7 +104,7 @@ class AbsensiResource extends Resource
     {
         return [
             'index' => Pages\ListAbsensi::route('/'),
-//            'form-absensi' => Pages\FormAbsensi::route('/form-absensi'),
+            'form-absensi' => Pages\FormAbsensi::route('/form-absensi'),
         ];
     }
 }
