@@ -18,8 +18,8 @@ return new class extends Migration
             $table->enum('status', ['hadir', 'alpha', 'izin']);
 
             // Foreign keys
-            $table->foreign('id_siswa')->references('id_siswa')->on('siswa');
-            $table->foreign('id_jadwal')->references('id_jadwal')->on('jadwal');
+            $table->foreign('id_siswa')->references('id_siswa')->on('siswa')->onDelete('cascade');
+            $table->foreign('id_jadwal')->references('id_jadwal')->on('jadwal')->onDelete('cascade');
         });
     }
 

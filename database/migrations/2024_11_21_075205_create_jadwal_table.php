@@ -18,8 +18,8 @@ return new class extends Migration
             $table->date('tanggal');
 
             // Foreign keys
-            $table->foreign('id_kelas')->references('id_kelas')->on('kelas');
-            $table->foreign('id_mapel')->references('id_mapel')->on('mata_pelajaran');
+            $table->foreign('id_kelas')->references('id_kelas')->on('kelas')->onDelete('cascade');
+            $table->foreign('id_mapel')->references('id_mapel')->on('mata_pelajaran')->onDelete('cascade');
         });
     }
 
