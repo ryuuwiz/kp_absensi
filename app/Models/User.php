@@ -54,22 +54,27 @@ class User extends Authenticatable implements FilamentUser
     }
 
     /**
-     * @param Panel $panel
-     * @return bool
      * @throws Exception
      */
     public function canAccessPanel(Panel $panel): bool
     {
-        $user = Auth::user();
-        $roles = $user->getRoleNames();
+//        $user = Auth::user();
+//        $roles = $user->getRoleNames();
+//
+//        if ($panel->getId() === 'admin' && $roles->contains('admin')) {
+//            return true;
+//        } else if ($panel->getId() === 'guru' && $roles->contains('guru')) {
+//            return true;
+//        }
+//        else {
+//            return false;
+//        }
+        if ($panel->getId() === 'admin') {
+            return str_ends_with($this->email, '@mail.com') && $this->hasVerifiedEmail();
+        } elseif ($panel->getId() === 'guru') {
+            return str_ends_with($this->email, '@mail.com') && $this->hasVerifiedEmail();
+        }
 
-        if ($panel->getId() === 'admin' && $roles->contains('admin')) {
-            return true;
-        } else if ($panel->getId() === 'guru' && $roles->contains('guru')) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return true;
     }
 }
