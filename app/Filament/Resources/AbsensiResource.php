@@ -5,15 +5,12 @@ namespace App\Filament\Resources;
 use App\Exports\AbsensiExport;
 use App\Filament\Resources\AbsensiResource\Pages;
 use App\Models\Absensi;
-use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Enums\FiltersLayout;
@@ -37,6 +34,9 @@ class AbsensiResource extends Resource
             ]);
     }
 
+    /**
+     * @throws \Exception
+     */
     public static function table(Table $table): Table
     {
         return $table
@@ -73,10 +73,9 @@ class AbsensiResource extends Resource
                 SelectFilter::make('status')
                     ->label('Status')
                     ->options([
-                        'Hadir' => 'Hadir',
-                        'Tidak Hadir' => 'Tidak Hadir',
-                        'Izin' => 'Izin',
-                        // Add other statuses as needed
+                        'hadir' => 'Hadir',
+                        'alpha' => 'Alpha',
+                        'izin' => 'Izin',
                     ]),
             ], layout: FiltersLayout::AboveContent)
             ->actions([])
@@ -104,7 +103,7 @@ class AbsensiResource extends Resource
     {
         return [
             'index' => Pages\ListAbsensi::route('/'),
-//            'form-absensi' => Pages\FormAbsensi::route('/form-absensi'),
+            'form-absensi' => Pages\FormAbsensi::route('/form-absensi'),
         ];
     }
 }

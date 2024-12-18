@@ -37,6 +37,9 @@ class AbsensiResource extends Resource
             ]);
     }
 
+    /**
+     * @throws \Exception
+     */
     public static function table(Table $table): Table
     {
         return $table
@@ -73,9 +76,9 @@ class AbsensiResource extends Resource
                 SelectFilter::make('status')
                     ->label('Status')
                     ->options([
-                        'Hadir' => 'Hadir',
-                        'Tidak Hadir' => 'Tidak Hadir',
-                        'Izin' => 'Izin',
+                        'hadir' => 'Hadir',
+                        'alpha' => 'Tidak Hadir',
+                        'izin' => 'Izin',
                         // Add other statuses as needed
                     ]),
             ], layout: FiltersLayout::AboveContent)
