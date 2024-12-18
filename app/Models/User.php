@@ -2,18 +2,13 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
-use Exception;
-use Filament\Models\Contracts\FilamentUser;
-use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable implements FilamentUser
+class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable, HasRoles;
@@ -51,30 +46,5 @@ class User extends Authenticatable implements FilamentUser
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
-    }
-
-    /**
-     * @throws Exception
-     */
-    public function canAccessPanel(Panel $panel): bool
-    {
-//        $user = Auth::user();
-//        $roles = $user->getRoleNames();
-//
-//        if ($panel->getId() === 'admin' && $roles->contains('admin')) {
-//            return true;
-//        } else if ($panel->getId() === 'guru' && $roles->contains('guru')) {
-//            return true;
-//        }
-//        else {
-//            return false;
-//        }
-        if ($panel->getId() === 'admin') {
-            return str_ends_with($this->email, '@mail.com') && $this->hasVerifiedEmail();
-        } elseif ($panel->getId() === 'guru') {
-            return str_ends_with($this->email, '@mail.com') && $this->hasVerifiedEmail();
-        }
-
-        return true;
     }
 }

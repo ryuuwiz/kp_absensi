@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Http\Responses\LogoutResponse;
+use Filament\Http\Responses\Auth\Contracts\LogoutResponse as LogoutResponseContract;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
-use Filament\Facades\Filament;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,6 +17,8 @@ class AppServiceProvider extends ServiceProvider
         if (env('APP_ENV') !== 'local') {
             URL::forceScheme('https');
         }
+
+        $this->app->bind(LogoutResponseContract::class, LogoutResponse::class);
     }
 
     /**
@@ -22,16 +26,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-//        Filament::serving(function () {
-//            if (auth()->check() && auth()->user()->hasRole('admin')) {
-//                // Admin dapat mengakses semuanya
-//                return true;
-//            } elseif (auth()->check() && auth()->user()->hasRole('guru')) {
-//                // Guru hanya dapat mengakses panel tertentu
-//                return true;
-//            }
-//
-//            abort(403);
-//        });
+        //
     }
 }

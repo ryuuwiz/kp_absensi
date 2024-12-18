@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use Althinect\FilamentSpatieRolesPermissions\FilamentSpatieRolesPermissionsPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -40,7 +41,6 @@ class GuruPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Guru/Widgets'), for: 'App\\Filament\\Guru\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
-//                Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
@@ -56,5 +56,6 @@ class GuruPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ]);
+//            ->plugin(FilamentSpatieRolesPermissionsPlugin::make());
     }
 }
